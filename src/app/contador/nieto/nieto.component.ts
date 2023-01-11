@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import * as actions from '../contador.actions';
+import { AppState } from '../../app.reducers';
+
 
 @Component({
   selector: 'app-nieto',
@@ -6,6 +10,20 @@ import { Component } from '@angular/core';
   styles: [
   ]
 })
-export class NietoComponent {
+export class NietoComponent implements OnInit{
 
+  contador?: number;
+  constructor( private store: Store<AppState>) { 
+    
+  }
+
+  ngOnInit(): void {
+    this.store.select('contador')
+          .subscribe( contador => this.contador = contador);   
+  }
+
+  reset() {
+    this.store.dispatch( actions.reset() );
+    
+  }
 }

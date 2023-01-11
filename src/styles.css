@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+.flex-container{    
+    display: flex;
+    column-gap: 15px;  /* Set a gap of 3px */
+    align-items: center;
+    justify-content: center;
+}
